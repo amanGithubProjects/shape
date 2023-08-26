@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    .main{
+        border: 3px solid black;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .secondary{
+        border: 3px solid rgb(213, 238, 22);
+        height: 70vh;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+  #colorChanger {
+    border: 3px solid red;
+    width: 250px;
+    height: 250px;
+    background-color: blue;
+    transition: background-color 0.5s ease;
+    display: flex;
+        justify-content: center;
+        align-items: center;
+  }
+  #shapeChanger {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(82, 249, 87);
+    border-radius: 50%;
+    transition: all 0.5s ease;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="main">
+    <div class="secondary">
+<div id="colorChanger">
+    <div id="shapeChanger"></div>
+</div>
+<button id="changeColorButton">Change Color</button>
+<button id="changeShapeButton">Change Shape</button>
+</div>
+</div>
+
+<script>
+const colorChanger = document.getElementById('colorChanger');
+const changeColorButton = document.getElementById('changeColorButton');
+
+// Array of colors to cycle through
+const colors = ['red', 'green', 'yellow', 'orange', 'purple'];
+let currentColorIndex = 0;
+
+changeColorButton.addEventListener('click', () => {
+  // Increment the color index and loop back to 0 if it goes beyond the array length
+  currentColorIndex = (currentColorIndex + 1) % colors.length;
+  
+  // Set the background color of the element to the current color
+  colorChanger.style.backgroundColor = colors[currentColorIndex];
+});
+
+const shapeChanger = document.getElementById('shapeChanger');
+const changeShapeButton = document.getElementById('changeShapeButton');
+
+let isCircle = true;
+
+changeShapeButton.addEventListener('click', () => {
+  if (isCircle) {
+    shapeChanger.style.borderRadius = '0';
+    // shapeChanger.style.color = 'black'
+  } else {
+    shapeChanger.style.borderRadius = '50%';
+    shapeChanger.style.backgroundColor = 'white'
+  }
+  
+  isCircle = !isCircle;
+});
+</script>
+
+</body>
+</html>
